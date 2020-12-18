@@ -1,0 +1,28 @@
+Ticket Booking System
+
+Features:
+
+	Passenger:
+		1.Book Bus
+		2.Delete Booking
+		3.Profile Update
+		4.Email will be sent to profile email, when booking is made.
+		5.Filter option available for viewing bus list
+	Admin:
+		1.Super user can Add,Update,Delete bus.
+		2.Can view django-admin site.
+
+Updation made:
+
+	1.Groups are deleted which was created in the previous version.
+	2.When super user or normal user is registered, the groups(admins,passengers) are create automatically,
+	  if the groups doesn't exists. Then users are added to the respective groups.
+	  This functionality is modified in accounts/signals/passenger_profile.
+	3.Validation in the bus form are added for available_tickets field.
+
+process to run project:
+1.Install packages in requirements.txt
+2.Migrate
+3.runserver
+	 
+		 
