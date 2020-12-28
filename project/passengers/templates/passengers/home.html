@@ -1,0 +1,61 @@
+{%  extends 'accounts/base.html' %}
+
+{% block content %}
+
+<h3 align="center">My Bookings</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Bus Name</th>
+      <th scope="col">No Of Tickets</th>
+      <th scope="col">Total Cost</th>
+      <th scope="col">Cancel Tickets</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for booking in bookings %}
+    <tr>
+      <th scope="row">{{booking.bus}}</th>
+      <td>{{booking.no_of_tickets}}</td>
+      <td>{{booking.total_cost}}</td>
+      <td><a href="{% url 'delete_ticket' booking.id %}" class="btn btn-danger">Cancel</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<hr>
+
+<h3 align="center">Buses List</h3>
+<form method="get">
+        {{busFilter.form}}
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Bus Name</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Total Seats</th>
+      <th scope="col">Available Seats</th>
+      <th scope="col">Price</th>
+      <th scope="col">Book</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for bus in buses %}
+    <tr>
+      <th scope="row">{{bus.name}}</th>
+      <td>{{bus.from_location}}</td>
+      <td>{{bus.to_location}}</td>
+      <td>{{bus.total_seats}}</td>
+      <td>{{bus.available_seats}}</td>
+      <td>{{bus.price}}</td>
+      <td><a href="{% url 'book_ticket' bus.id %}"" class="btn btn-primary">Book</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<hr>
+
+{% endblock content %}

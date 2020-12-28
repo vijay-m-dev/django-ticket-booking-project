@@ -1,0 +1,15 @@
+{%  extends 'accounts/base.html' %}
+ 
+ {% block content %}
+<br>
+<p>Booking details: {{ bus.name }} from {{ bus.from_location }} to {{ bus.to_location }} </p>
+<p>Price per ticket: {{ bus.price }}</p>
+<form action="{% url 'book_ticket' bus.id %}" method="POST">
+	{% csrf_token %}
+	Enter number of tickets:
+	<input type="number" name="no_of_tickets" required>
+	<input type="submit" name="BOOK" value="Book" class="btn btn-outline-success">
+	<a href="{% url 'home' %}" class="btn btn-outline-danger">Cancel</a>
+</form>
+
+{% endblock content %}

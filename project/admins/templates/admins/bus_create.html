@@ -1,0 +1,16 @@
+{%  extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form action="" method="POST">
+	{% csrf_token %}
+	<fieldset class="form-group">
+		<legend>Bus Form </legend>
+		{{ form|crispy }}
+	</fieldset>
+	<div class="form-group">
+		<input class="btn btn-outline-info" type="submit" value="Submit">
+	</div>	
+</form>
+
+{% endblock content %}

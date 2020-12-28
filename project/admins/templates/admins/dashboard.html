@@ -1,0 +1,43 @@
+{%  extends 'accounts/base.html' %}
+
+{% block content %}
+
+<h1>Dashboard</h1>
+
+<h3 align="center">Buses</h3>
+
+  <form method="get">
+        {{busFilter.form}}
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+  </form>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Bus Name</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Total Seats</th>
+      <th scope="col">Available Seats</th>
+      <th scope="col">Price</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for bus in buses %}
+    <tr>
+      <th scope="row">{{bus.name}}</th>
+      <td>{{bus.from_location}}</td>
+      <td>{{bus.to_location}}</td>
+      <td>{{bus.total_seats}}</td>
+      <td>{{bus.available_seats}}</td>
+      <td>{{bus.price}}</td>
+      <td><a href="{% url 'bus_update' bus.id %}" class="btn btn-outline-info">Update</a></td>
+      <td><a href="{% url 'bus_delete' bus.id %}" class="btn btn-outline-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

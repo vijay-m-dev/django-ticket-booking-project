@@ -1,0 +1,12 @@
+{%  extends 'accounts/base.html' %}
+
+{% block content %}
+
+<p>Are you sure you want to cancel the booking {{ booking.bus.name }} from {{booking.bus.from_location}} to {{booking.bus.to_location}}?</p>
+<form action="{% url 'delete_ticket' booking.id %}", method="POST">
+	{% csrf_token %}
+	<input type="submit" name="Delete" value="Yes, Cancel" class="btn btn-outline-danger">
+	<a href="{% url 'home' %}" class="btn btn-outline-info">No</a>
+</form>
+
+{% endblock content %}

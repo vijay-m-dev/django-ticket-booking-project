@@ -1,0 +1,14 @@
+{%  extends 'accounts/base.html' %}
+
+{% block content %}
+<br>
+<h4>Are you sure you want to delete the bus {{ bus.name }}?</h4>
+<form action="{% url 'bus_delete' bus.id %}" method="POST">
+	{% csrf_token  %}
+	<span class="form-group">
+		<input class="btn btn-outline-danger" type="submit" value="Delete">
+	</span>	
+	<a  class="btn btn-outline-info" href="{% url 'dashboard' %}">Cancel</a>
+</form>
+
+{% endblock content %}
